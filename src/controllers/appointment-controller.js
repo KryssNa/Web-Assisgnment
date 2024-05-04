@@ -4,7 +4,7 @@ const Appointment = require("../models/appointment-model")
 const addAppointment = async (req, res) => {
   const { date,time } = req.body
 
-  if (!date && !time ) {
+  if (!date || !time ) {
     return res
       .status(400)
       .json({ success: false, message: "Enter all the required field!!" })
@@ -22,7 +22,7 @@ if (!isFutureDateTime(date, time)) {
     return res.status(400).json({ success: false, message: "Please enter a future date and time" });
 }
 if(time=="15:00"){
-    return res.status(400).json({ success: false, message: "Please enter another timeslot this timeslot is unavailable" });
+    return res.status(400).json({ success: false, message: " This timeslot is unavailable" });
 }
 
    
